@@ -37,28 +37,7 @@
   letter-spacing: 0.1em;
 }
 
-@media (max-width: 768px) {
-  .photo-text {
-    font-size: 14px;}
-  
-  .photo-line {
-    width: 300px;
-  }
-}
 
-@media (max-width: 400px) {
-  .photo-header {
-    justify-content: flex-start;
-    margin-left: -100px;
-    gap: 16px;
-  }
-
-  .photo-text {
-    font-size: 12px;}
-}
-
-
-/* === Photo Grid === */
 .photo-grid {
   max-width: 1400px;
   margin: 200px auto 0;
@@ -77,62 +56,78 @@
   cursor: pointer;
   transition: .3s;
 }
-.photo-item img:hover {
-  opacity: 0.8;
-}
 
-/* coming soon */
 .photo-item.coming {
   width: 289px;
-  height: auto;
+  aspect-ratio: 1 / 1;
   border: 2px solid #ccc;
   border-radius: 13px;
   display: flex;
   justify-content: center;
   align-items: center;
+  box-sizing: border-box;
 }
 
 .photo-item.coming span {
   font-size: 18px;
   letter-spacing: 0.1em;
-   
+}
+
+@media (max-width: 768px) {
+  .photo-text {
+    font-size: 14px;}
+  
+  .photo-line {
+    width: 300px;
+  }
+  .photo-item.coming {
+    width: 150px;
+    height: 150px;
+  }
+
+  .photo-item.coming span {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 400px) {
+  .photo-header {
+    justify-content: flex-start;
+    margin-left: -100px;
+    gap: 16px;
+  }
+
+  .photo-text {
+    font-size: 12px;}
 }
 
 
-/* ===========================
-      SP：フォト 2枚並び
-=========================== */
-@media (max-width: 768px) {
 
+ 
+
+@media (max-width: 768px) {
   .photo-grid {
     display: grid;
-    grid-template-columns: repeat(2, 185px);  
-    gap: 55px;                               
-    justify-content: center;                  
-    margin-top: 100px;                       
+    grid-template-columns: repeat(2, 150px);
+    gap: 24px;
+    justify-content: center;
+    margin-top: 100px;
   }
 
   .photo-item img {
-    width: 185px;
-    height: 185px;
+    width: 150px;
+    height: 150px;
     object-fit: cover;
     border-radius: 13px;
   }
 
   .photo-item.coming {
-    width: 185px;
-    height: 185px;
+    width: 150px;
+    height: 150px;
   }
 
   .photo-item.coming span {
     font-size: 12px;
-    
-}
-}
-
-@media (max-width: 700px) {
-  .modal-close {
-    display: none;
   }
 }
 
@@ -425,34 +420,40 @@
   display: none;
   position: fixed;
   z-index: 9999;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  inset: 0;
   background: rgba(0,0,0,0.65);
-  backdrop-filter: blur(2px); 
+  backdrop-filter: blur(2px);
   justify-content: center;
   align-items: center;
 }
 
+.modal-inner {
+  position: relative;
+  display: inline-block;
+}
+
 .modal-content {
-  max-width: 45%;
-  max-height: 90%;
+  display: block;
+  width: min(520px, 80vw);
+  max-height: 78vh;
+  object-fit: contain;
   background: #fff;
   padding: 3px;
 }
 
-
 .modal-close {
   position: absolute;
-  top: 85px;
-  right: 150px;
-  font-size: 40px;
+  top: -45px;
+  right: -30px;
+  font-size: 38px;
   color: white;
   cursor: pointer;
   font-weight: 300;
   z-index: 10000;
+  line-height: 1;
 }
+
+
 
 @media (max-width: 768px) {
 .header_bg {
@@ -466,5 +467,9 @@
   background: rgba(255, 255, 255, 0.40); /* 透明白 */
   z-index: 900;
   border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+}
+.modal-content {
+  width: 72vw;
+  max-height: 60vh;
 }
 }

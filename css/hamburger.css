@@ -47,3 +47,25 @@
   cursor: pointer;
   z-index: 10000;
 }
+
+@media (max-width: 768px) {
+  .hamburger {
+    display: block !important;
+    position: fixed;
+    top: 34px;
+    right: 34px;
+    width: 60px;
+    z-index: 2000;
+    cursor: pointer;
+  }
+
+  .hamburger img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .header_nav {
+    display: none;
+  }
+}

@@ -10,6 +10,7 @@ html {
   scroll-behavior: smooth;
 }
 
+
 .page-wrapper {
   box-sizing: border-box;
 }
@@ -805,13 +806,13 @@ height: auto;
     margin-left: -100px;
   }
 
-  /* タイトル位置を中央寄せ */
-  .works-title {
-    text-align: center;
-    
-    width: fit-content;
-    position: relative;
-  }
+/* タイトル位置を中央寄せ */
+.works-title {
+  width: fit-content;
+  margin: 0 auto;
+  position: relative;
+  text-align: center;
+}
 
   /* 右に短い線を付ける（aboutと同じ仕様） */
   .works-title.right-line::after {
@@ -854,6 +855,12 @@ height: auto;
     display: block;
     text-align: right;
   }
+
+
+.works-title span {
+  position: relative;
+  left: 0;
+}
 }
 
 @media (max-width: 400px) {
@@ -1414,10 +1421,10 @@ height: auto;
     width: 870px;
     right: 20%;
   }
-  .works-title span {
-    position: relative;
-    left: 80%;
-  }
+.works-title span {
+  position: relative;
+  left: 80%;
+}
 }
 
 
@@ -1632,6 +1639,129 @@ height: auto;
   /* 線も一緒に左へ */
   .section-title.right-line::after {
     left: 25vw; 
+  }
+}
+
+
+/* ===========================
+  Responsive Adjustments
+  大きく崩さず、自然に整えるための上書き
+=========================== */
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+@media (max-width: 768px) {
+  .works,
+  .photo {
+    width: 100%;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    overflow: hidden;
+  }
+
+  .works-gallery,
+ .photo-gallery {
+  gap: 11px;
+  padding: 0 24px;
+}
+
+  .works-item:nth-child(1) img,
+  .works-item:nth-child(2) img,
+  .works-item:nth-child(3) img {
+    margin-left: 0;
+  }
+
+  .works-item:nth-child(odd) {
+    align-self: flex-start;
+  }
+
+  .works-item:nth-child(even) {
+    align-self: flex-end;
+  }
+
+  .photos-item:nth-child(1),
+  .photos-item:nth-child(2),
+  .photos-item:nth-child(3) {
+    margin-left: 0;
+  }
+
+  .photos-item:nth-child(odd) {
+    align-self: flex-end;
+  }
+
+  .photos-item:nth-child(even) {
+    align-self: flex-start;
+  }
+
+  .works-item,
+  .photos-item {
+  width: min(240px, 68vw);
+}
+
+  .works-item img,
+  .photos-item img {
+    width: 100%;
+    height: auto;
+  }
+
+  .works-text,
+  .photo-text {
+    width: min(100%, 560px);
+    padding: 0 4px;
+  }
+}
+
+@media (max-width: 400px) {
+  .works-item,
+  .photos-item {
+    width: min(160px, 42vw);
+  }
+
+  .works-gallery,
+  .photo-gallery {
+    gap: 16px;
+  }
+
+  .works-text,
+  .photo-text,
+  .about-text,
+  .concept p,
+  .contact-text p {
+    font-size: 12px;
+  }
+}
+
+
+.real-wave-wrap svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .loading-logo {
+    width: 150px;
+    margin-bottom: 56px;
+  }
+
+  .black-line,
+  .real-wave-wrap {
+    width: 86vw;
+    max-width: 420px;
+  }
+
+  .real-wave-wrap {
+    overflow: hidden;
+    margin: -8px auto 32px;
+  }
+
+  #percent {
+    margin-top: -36px;
+    font-size: 14px;
   }
 }
 

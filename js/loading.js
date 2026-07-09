@@ -32,10 +32,10 @@ window.addEventListener("load", () => {
           document.getElementById("loading").style.transition = "1s ease";
         }, 800);
       }
-    }, 45); // ← パーセント速度ゆっくり見える
+    }, 30); // ← パーセント速度ゆっくり見える
 
     // dot 移動 (4.5秒)
-    dot.style.transition = "left 4.5s ease";
+   dot.style.transition = "left 3s ease";
     dot.style.left = "100%";
 
   }, 2600);

@@ -214,7 +214,7 @@
 
 
   .logo-section .logo-right p {
-    font-size: 14px;
+    font-size: 13px;
     line-height: 2.0;
     letter-spacing: 0.05em;
     text-align: center;
@@ -989,5 +989,28 @@
 
   .hamburger.open {
     opacity: 0;
+  }
+}
+@media (max-width: 768px) {
+  .hamburger {
+    display: block !important;
+    position: fixed !important;
+    top: 34px !important;
+    right: 34px !important;
+    width: 60px !important;
+    z-index: 10001 !important;
+    cursor: pointer;
+  }
+
+  .hamburger img {
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+
+  .header_nav {
+    display: none !important;
   }
 }
