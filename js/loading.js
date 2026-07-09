@@ -11,7 +11,7 @@ window.addEventListener("load", () => {
 const waveLength = wave.getTotalLength();
 
 wave.style.strokeDasharray = waveLength;
-wave.style.strokeDashoffset = waveLength;
+wave.style.strokeDashoffset = -waveLength;
 
 waveWrap.style.opacity = 1;
 
