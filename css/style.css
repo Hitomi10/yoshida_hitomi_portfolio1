@@ -515,10 +515,10 @@ html {
 
 .concept-title {
   position: fixed;
-  top: 18%;
-  left: 49%;
+  top: 5%;
+  left: 50%;
   transform: translate(-50%, -50%);
-  max-width: 590px;
+  max-width: 560px;
   width: 100%;
   z-index: 30;
   pointer-events: none;
