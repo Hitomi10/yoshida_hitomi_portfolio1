@@ -7,12 +7,18 @@ window.addEventListener("load", () => {
 
   let progress = 0;
 
-  // 白線を描画（2.2秒）
-  waveWrap.style.opacity = 1;
-  setTimeout(() => {
-    wave.style.transition = "stroke-dashoffset 2.2s ease-out";
-    wave.style.strokeDashoffset = 0;
-  }, 200);
+// 白線を描画（2.2秒）
+const waveLength = wave.getTotalLength();
+
+wave.style.strokeDasharray = waveLength;
+wave.style.strokeDashoffset = waveLength;
+
+waveWrap.style.opacity = 1;
+
+setTimeout(() => {
+  wave.style.transition = "stroke-dashoffset 2.2s ease-out";
+  wave.style.strokeDashoffset = 0;
+}, 200);
 
   // 白線完了後 → 黒線＆パーセント表示
   setTimeout(() => {
