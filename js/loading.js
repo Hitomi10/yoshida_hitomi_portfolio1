@@ -7,17 +7,11 @@ window.addEventListener("load", () => {
 
   let progress = 0;
 
-// 白線を描画（2.2秒）
-const waveLength = wave.getTotalLength();
-
-wave.style.strokeDasharray = waveLength;
-wave.style.strokeDashoffset = -waveLength;
-
+// 白線を左→右へ描画（2.2秒、clip-pathのワイプで表示するので逆走しない）
 waveWrap.style.opacity = 1;
 
 setTimeout(() => {
-  wave.style.transition = "stroke-dashoffset 2.2s ease-out";
-  wave.style.strokeDashoffset = 0;
+  waveWrap.classList.add("is-drawn");
 }, 200);
 
   // 白線完了後 → 黒線＆パーセント表示

@@ -394,7 +394,7 @@ html {
     }
 
     .main-visual .concept-title {
-        top: 50%;
+        top: 48%;
         max-width: 87%;
     }
     .main-visual .outline1 {
@@ -1141,22 +1141,6 @@ height: auto;
   margin: 0 auto;
 }
 
-.footer-wave {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: auto;
-  z-index: 0;
-}
-
-.footer-links {
-  position: relative;
-  z-index: 1;
-  max-width: 900px;
-  margin: 0 auto;
-}
-
 /* === sns・nav・pagetop === */
 .footer-top {
   display: flex;
@@ -1210,10 +1194,8 @@ height: auto;
 /* ページトップ */
 .page-top {
   position: absolute;
-  right: 0;
-  bottom: -60px;
-  position: absolute;
   right: -170px;
+  bottom: -60px;
   z-index: 9999;
 }
 
@@ -1568,17 +1550,18 @@ height: auto;
 }
 
 /* 白線（黒線より上にくる） */
+/* 白線は clip-path で左→右にワイプ表示する（stroke-dasharrayはパスの始点/終点の向きに
+   左右されて逆走して見えることがあるため、確実に左→右になるこの方式にしている） */
 .real-wave-wrap {
-  width: 100%;               
+  width: 100%;
   opacity: 0;
-  transition: opacity .5s ease;
+  clip-path: inset(0 100% 0 0);
+  transition: opacity .5s ease, clip-path 2.2s ease-out;
   margin: -10px auto 40px;     /* 上下余白の微調整 */
 }
 
-
-#wavePath {
-  stroke-dasharray: 2000;
-  stroke-dashoffset: -2000;
+.real-wave-wrap.is-drawn {
+  clip-path: inset(0 0% 0 0);
 }
 
 /* 黒線 */
@@ -1633,7 +1616,7 @@ height: auto;
   /* about / photo タイトル位置を左へ */
   .about .section-title.right-line,
   .photo .section-title.right-line {
-    margin-left: 160px; /
+    margin-left: 160px;
   }
 
   /* 線も一緒に左へ */
@@ -1752,6 +1735,12 @@ img {
   .real-wave-wrap {
     width: 86vw;
     max-width: 420px;
+  }
+
+  /* SPではSVGだけ一回り大きく見せる（黒線の幅は変えない） */
+  .real-wave-wrap {
+    width: 94vw;
+    max-width: 460px;
   }
 
   .real-wave-wrap {
