@@ -35,8 +35,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const shift = getResponsiveShiftBySection(s.key); // ★追加
 
-    const pageX = rect.left + window.scrollX + s.offsetX + shift.x; // ★足す
+    let pageX = rect.left + window.scrollX + s.offsetX + shift.x; // ★足す
     const pageY = rect.top + window.scrollY + s.offsetY + shift.y;  // ★足す
+
+    // ▼スマホ版のみ：.blob-wrapperは親要素にposition指定が無く、position:absolute
+    // の基準がビューポート（初期包含ブロック）になっているため、上のoffsetX/shift.x
+    // 計算結果が画面幅を超えると、body側のoverflow-x:hiddenでは止まらずページ自体の
+    // 横スクロール領域が広がり、縦スクロール中に左右へブレる原因になっていた。
+    // デザイン（ブロブが見出しを追いかける動き）は変えず、実際に画面内に収まる
+    // 範囲だけにX座標を収める。
+    if (window.innerWidth <= 768) {
+      const viewportWidth = document.documentElement.clientWidth;
+      const maxX = Math.max(0, viewportWidth - blobWrapper.offsetWidth);
+      pageX = Math.min(Math.max(pageX, 0), maxX);
+    }
 
     blobWrapper.style.left = `${pageX}px`;
     blobWrapper.style.top = `${pageY}px`;

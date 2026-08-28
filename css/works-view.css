@@ -114,12 +114,21 @@
   border: 2px solid #000;
   border-radius: 13px;
   background: #fff;
+  color: #000;
   font-size: 15px;
   font-family: "Sofia Pro Variable", sans-serif;
   letter-spacing: 0.1em;
   font-weight: 600;
   cursor: pointer;
   transition: 0.2s;
+  appearance: none;
+  -webkit-appearance: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.category-btn:focus,
+.category-btn:active {
+  outline: none;
 }
 
 .category-btn.active {
@@ -157,6 +166,13 @@
     margin: 0;
   }
 
+  /* about-view.htmlの.about-lineと同様に、スマホでは横線を短くする。
+     583pxのままだと.works-header（flex）の中でタイトルが右に押し出され、
+     画面右寄りに見えてしまうのが原因のため、線幅そのものを調整する。 */
+  .works-line {
+    width: 300px;
+  }
+
 
   /* ▼ カテゴリーエリア */
   .works-category {
@@ -180,10 +196,14 @@
 
 @media (max-width: 400px) {
 
+  /* about-view.htmlの.about-title-box（線300px・margin-left:-100px）と
+     同じ考え方に揃える。線幅が583pxのままだったため-370pxという大きな
+     固定値で無理やり位置を戻していたが、線を300pxにした今は他ページと
+     同じ-100pxで自然に揃う。 */
   .about-title-box,
   .works-header {
     justify-content: flex-start;
-    margin-left: -370px; 
+    margin-left: -100px;
     gap: 16px;
   }
 }
@@ -298,17 +318,20 @@
     padding: 0 20px;
   }
 
+  /* 画像と同じ幅・中央寄せをカード自体にも適用し、.work-type/.work-title の左端が
+     画像の左端と常に一致するようにする（固定のmargin-leftではなく、画像と同じ
+     max-width/margin基準で揃える） */
+  .work-card {
+    max-width: 360px;
+    margin: 0 auto;
+  }
+
   .work-card img {
     width: auto;      
     max-width: 360px; 
     height: auto;
     margin: 0 auto;
     display: block;
-  }
-
-  .work-type,
-  .work-title {
-    text-align: center;
   }
 
   /* タイプ */
@@ -351,6 +374,10 @@
 
 
 @media (max-width: 400px) {
+    .work-card {
+      max-width: 280px;
+    }
+
     .work-card img {
       width: 100%;
       max-width: 280px;

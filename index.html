@@ -81,6 +81,12 @@
 
   </div>
 </div>
+<script>
+  /* 同じセッション内で訪問済みの場合はローディング画面を表示しない（初回訪問のみ表示） */
+  if (sessionStorage.getItem("seeLoadingShown")) {
+    document.getElementById("loading").style.display = "none";
+  }
+</script>
 
 
   <body id="top">
@@ -154,8 +160,8 @@
           </picture>
 
           <p>
-            お客様の声に耳を傾け、海がどこまでも続くように可能性を一緒に形にしていく。<br />
-            ただ整えるだけではなく、デザインから音が聞こえ、心が踊る。<br />
+            お客様の声に耳を傾け、海がどこまでも続くように可能性を一緒に形にしていく。<br>
+            ただ整えるだけではなく、デザインから音が聞こえ、心が踊る。
             そんな瞬間をお届けできますように。
           </p>
         </section>

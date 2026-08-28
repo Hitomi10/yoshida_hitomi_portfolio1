@@ -65,6 +65,18 @@ html {
   object-fit: contain;
 }
 
+/* タップ／クリック時に出る青いハイライト・フォーカス枠だけを消す
+   （サイズ・位置・リンク先・遷移処理は一切変更しない） */
+.logo a {
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
+}
+
+.logo a:focus,
+.logo a:active {
+  outline: none;
+}
+
 .header_nav ul {
   display: flex;
   gap: 50px;
@@ -341,6 +353,7 @@ html {
   }
   .main-visual .concept-title {
     width: 500px;
+    top: 66%;
   }
   
 }
@@ -362,7 +375,12 @@ html {
     left: 23%;
     top: 57%;
   }
+  .main-visual .concept-title {
+        width:477px;
+        top: 47%;
 }
+}
+
 
 @media (max-width: 600px) {
 
@@ -384,6 +402,9 @@ html {
   .main-visual img {
     margin-top: -60px; 
   }
+    .main-visual .concept-title {
+        top: 43%;
+    }
 
 }
 
@@ -394,8 +415,8 @@ html {
     }
 
     .main-visual .concept-title {
-        top: 48%;
-        max-width: 87%;
+        top: 42%;
+        max-width: 93%;
     }
     .main-visual .outline1 {
         width: 90%;
@@ -806,8 +827,10 @@ height: auto;
     margin-left: -100px;
   }
 
-/* タイトル位置を中央寄せ */
-.works-title {
+/* タイトル位置を中央寄せ（トップページのworksセクション見出し専用。
+   works-view.html側の同名クラス「.works-title」には影響させないよう
+   .section-title と組み合わせたセレクタに限定する） */
+.section-title.works-title {
   width: fit-content;
   margin: 0 auto;
   position: relative;
